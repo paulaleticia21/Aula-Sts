@@ -1,7 +1,6 @@
-package org.generation.BlogPessoal.model;
+package org.generation.blogPessoal.model;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +15,10 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
-@Table(name = "Postagens")
 @Entity
+@Table(name = "postagem")
 public class Postagem {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -29,7 +28,7 @@ public class Postagem {
 	private String titulo;
 	
 	@NotNull
-	@Size(min = 10, max = 500)
+	@Size(min = 5, max = 100)
 	private String texto;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -39,9 +38,13 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
 	
-			
-
-			public long getId() {
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
@@ -66,14 +69,6 @@ public class Postagem {
 		this.date = date;
 	}
 	
-	public Tema getTema() {
-		return tema;
-	}
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
 	
-	
-	
-	
+
 }
